@@ -1,0 +1,1278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aditya Katyayan | Support Systems Studio</title>
+  <meta name="description" content="Aditya Katyayan is an AZ-900 certified IT Support and Cloud Infrastructure professional across POS, IAM, fintech, and service desk operations.">
+  <meta property="og:title" content="Aditya Katyayan | IT Support & Cloud Engineer">
+  <meta property="og:description" content="Premium technical support portfolio for POS, cloud IAM, fintech, and service desk operations.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#070707">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@450;550;650;750;850;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070707;
+      --ink: #f5f1e8;
+      --muted: #aaa39a;
+      --dim: #6f6a64;
+      --line: rgba(245, 241, 232, .13);
+      --panel: #11100f;
+      --panel-2: #191715;
+      --cream: #f5f1e8;
+      --gold: #d8b76d;
+      --sage: #9fb69b;
+      --blue: #9dc8e9;
+      --rose: #d99696;
+      --radius: 30px;
+      --font: "Inter", system-ui, sans-serif;
+      --serif: "Instrument Serif", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 50% -18%, rgba(216, 183, 109, .2), transparent 34rem),
+        radial-gradient(circle at 84% 16%, rgba(157, 200, 233, .11), transparent 28rem),
+        var(--bg);
+      font-family: var(--font);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, transparent 0 30%, rgba(245, 241, 232, .045) 42%, transparent 54% 100%),
+        linear-gradient(245deg, transparent 0 18%, rgba(157, 200, 233, .055) 34%, transparent 48% 100%);
+      background-size: 220% 220%;
+      animation: ambientSweep 12s ease-in-out infinite alternate;
+      opacity: .85;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .wrap {
+      width: min(1380px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      pointer-events: none;
+    }
+
+    .nav {
+      width: min(920px, calc(100% - 32px));
+      height: 58px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 14px;
+      padding: 7px;
+      pointer-events: auto;
+      border: 1px solid rgba(245, 241, 232, .16);
+      background: rgba(13, 13, 12, .7);
+      border-radius: 999px;
+      backdrop-filter: blur(22px);
+      box-shadow: 0 18px 70px rgba(0, 0, 0, .32);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 10px;
+      font-weight: 850;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      color: #11100f;
+      background: var(--cream);
+      border-radius: 50%;
+      font-size: 12px;
+      letter-spacing: -.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .nav-links a,
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 15px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+      transition: color .2s, background .2s, transform .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      background: rgba(245, 241, 232, .08);
+    }
+
+    .nav-cta {
+      justify-self: end;
+      color: #11100f;
+      background: var(--cream);
+    }
+
+    .nav-cta:hover { transform: translateY(-1px); background: var(--gold); }
+
+    .menu {
+      display: none;
+      justify-self: end;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      color: #11100f;
+      background: var(--cream);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding: 118px 0 24px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-art {
+      position: absolute;
+      inset: 88px 16px 24px;
+      z-index: -1;
+      border: 1px solid var(--line);
+      border-radius: 42px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(245, 241, 232, .09), transparent 32%),
+        radial-gradient(circle at 50% 50%, rgba(216, 183, 109, .16), transparent 30rem),
+        #0e0d0c;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .03), 0 40px 120px rgba(0, 0, 0, .42);
+      backdrop-filter: blur(26px) saturate(140%);
+    }
+
+    .hero-art::before,
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+      border-radius: 999px;
+      filter: blur(5px);
+      opacity: .75;
+    }
+
+    .hero-art::before {
+      width: 42vw;
+      height: 42vw;
+      left: 8%;
+      top: 14%;
+      background: radial-gradient(circle, rgba(157, 200, 233, .18), transparent 64%);
+      border: 1px solid rgba(157, 200, 233, .18);
+      animation: morphOne 10s ease-in-out infinite alternate;
+    }
+
+    .hero-art::after {
+      width: 32vw;
+      height: 32vw;
+      right: 8%;
+      bottom: 8%;
+      background: radial-gradient(circle, rgba(159, 182, 155, .18), transparent 64%);
+      border: 1px solid rgba(159, 182, 155, .18);
+      animation: morphTwo 12s ease-in-out infinite alternate;
+    }
+
+    .hero-art .shine-layer {
+      position: absolute;
+      inset: -30%;
+      background: conic-gradient(from 180deg, transparent, rgba(245, 241, 232, .09), transparent, rgba(216, 183, 109, .09), transparent);
+      animation: slowRotate 20s linear infinite;
+      opacity: .75;
+    }
+
+    .spotlight {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 380px;
+      height: 380px;
+      z-index: 1;
+      pointer-events: none;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 241, 232, .11), rgba(157, 200, 233, .055) 35%, transparent 68%);
+      mix-blend-mode: screen;
+      transform: translate3d(var(--mx, 50vw), var(--my, 50vh), 0) translate(-50%, -50%);
+      transition: transform .18s ease-out;
+    }
+
+    .orbit {
+      position: absolute;
+      inset: 9%;
+      border: 1px solid rgba(245, 241, 232, .1);
+      border-radius: 50%;
+      transform: rotate(-10deg);
+      animation: orbitSpin 18s linear infinite;
+    }
+
+    .orbit.two {
+      inset: 20% 14%;
+      transform: rotate(18deg);
+      border-style: dashed;
+      animation-duration: 26s;
+      animation-direction: reverse;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 24px;
+      align-items: end;
+      padding-bottom: 34px;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      margin-bottom: 22px;
+      padding: 9px 13px;
+      color: var(--cream);
+      background: rgba(245, 241, 232, .09);
+      border: 1px solid rgba(245, 241, 232, .16);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #7dffba;
+      box-shadow: 0 0 0 7px rgba(125, 255, 186, .1);
+    }
+
+    h1 {
+      max-width: 1040px;
+      margin: 0;
+      font-size: clamp(58px, 10.4vw, 178px);
+      line-height: .82;
+      letter-spacing: -.09em;
+      font-weight: 900;
+    }
+
+    h1 em {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -.055em;
+      color: var(--gold);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 12px;
+    }
+
+    .side-card {
+      min-height: 170px;
+      padding: 18px;
+      border: 1px solid rgba(245, 241, 232, .16);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, .035)),
+        rgba(17, 16, 15, .55);
+      border-radius: 28px;
+      backdrop-filter: blur(18px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 20px 70px rgba(0, 0, 0, .28);
+      animation: cardFloat 7s ease-in-out infinite;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .side-card:nth-child(2) {
+      animation-delay: -2.6s;
+    }
+
+    .side-card::after,
+    .text-card::after,
+    .mini-card::after,
+    .job::after,
+    .skill::after,
+    .education::after,
+    .contact-link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0 30%, rgba(255, 255, 255, .16), transparent 58% 100%);
+      transform: translateX(-140%);
+      transition: transform .8s cubic-bezier(.2, .8, .2, 1);
+      pointer-events: none;
+    }
+
+    .side-card:hover::after,
+    .text-card:hover::after,
+    .mini-card:hover::after,
+    .job:hover::after,
+    .skill:hover::after,
+    .education:hover::after,
+    .contact-link:hover::after {
+      transform: translateX(140%);
+    }
+
+    .side-card b {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 44px;
+      line-height: .9;
+      letter-spacing: -.07em;
+    }
+
+    .side-card span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: end;
+      margin-top: 24px;
+    }
+
+    .intro {
+      max-width: 680px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(17px, 1.7vw, 21px);
+      line-height: 1.5;
+      font-weight: 550;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 18px;
+      border: 1px solid rgba(245, 241, 232, .14);
+      border-radius: 999px;
+      background: rgba(245, 241, 232, .07);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 850;
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(245, 241, 232, .28);
+      background: rgba(245, 241, 232, .12);
+    }
+
+    .btn.primary {
+      color: #11100f;
+      background: var(--cream);
+    }
+
+    .btn.primary:hover { background: var(--gold); }
+
+    .marquee {
+      padding: 18px 0;
+      border-block: 1px solid var(--line);
+      overflow: hidden;
+      background: #0c0b0a;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: move 28s linear infinite;
+    }
+
+    .marquee span {
+      padding: 0 28px;
+      color: var(--muted);
+      font-size: clamp(22px, 3vw, 42px);
+      font-weight: 900;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+    }
+
+    .marquee em {
+      font-family: var(--serif);
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    @keyframes move { to { transform: translateX(-50%); } }
+
+    section { padding: 105px 0; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      margin: 0 0 14px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    h2 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(42px, 6vw, 96px);
+      line-height: .86;
+      letter-spacing: -.075em;
+      font-weight: 900;
+    }
+
+    h2 em {
+      font-family: var(--serif);
+      color: var(--gold);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -.04em;
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+      font-weight: 550;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 18px;
+    }
+
+    .portrait {
+      min-height: 620px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 50% 28%, rgba(245, 241, 232, .18), transparent 17rem),
+        linear-gradient(145deg, rgba(157, 200, 233, .14), rgba(216, 183, 109, .1) 44%, rgba(159, 182, 155, .13)),
+        var(--panel);
+      box-shadow: 0 34px 100px rgba(0, 0, 0, .36);
+      backdrop-filter: blur(20px) saturate(145%);
+    }
+
+    .portrait::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle at 50% 28%, rgba(245, 241, 232, .18), transparent 32%), linear-gradient(135deg, transparent, rgba(216, 183, 109, .14), transparent);
+      animation: slowRotate 24s linear infinite;
+      opacity: .7;
+    }
+
+    .portrait::after {
+      content: "Technical Support / Cloud Infrastructure / POS Operations";
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      padding: 18px;
+      border: 1px solid rgba(245, 241, 232, .14);
+      border-radius: 22px;
+      color: var(--cream);
+      background: rgba(7, 7, 7, .45);
+      backdrop-filter: blur(16px);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .portrait img {
+      position: absolute;
+      inset: 18px;
+      width: calc(100% - 36px);
+      height: calc(100% - 36px);
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 24px;
+      filter: saturate(1.06) contrast(1.04);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .38);
+    }
+
+    .portrait .photo-glass {
+      position: absolute;
+      inset: 18px;
+      border-radius: 24px;
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, rgba(255, 255, 255, .18), transparent 32%),
+        linear-gradient(to top, rgba(7, 7, 7, .52), transparent 46%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), inset 0 0 0 1px rgba(245, 241, 232, .12);
+    }
+
+    .about-copy {
+      display: grid;
+      gap: 18px;
+    }
+
+    .text-card,
+    .mini-card,
+    .job,
+    .skill,
+    .contact-panel {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .13), rgba(255, 255, 255, .035)),
+        rgba(17, 16, 15, .56);
+      border-radius: var(--radius);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, .22);
+      backdrop-filter: blur(24px) saturate(150%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .text-card::before,
+    .mini-card::before,
+    .job::before,
+    .skill::before,
+    .education::before,
+    .contact-panel::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: calc(var(--radius) - 1px);
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .13), transparent 38%);
+      opacity: .8;
+    }
+
+    .text-card {
+      padding: 34px;
+      color: var(--muted);
+      font-size: clamp(19px, 2vw, 26px);
+      line-height: 1.38;
+      font-weight: 650;
+    }
+
+    .text-card strong { color: var(--cream); }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      min-height: 190px;
+      padding: 22px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .mini-card:hover,
+    .education:hover {
+      transform: translateY(-8px);
+      border-color: rgba(245, 241, 232, .32);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, .34);
+    }
+
+    .mini-card b {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 34px;
+      letter-spacing: -.07em;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .job {
+      min-height: 380px;
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .job:hover {
+      transform: translateY(-10px) scale(1.01);
+      border-color: rgba(245, 241, 232, .3);
+      box-shadow: 0 40px 110px rgba(0, 0, 0, .38);
+    }
+
+    .job:nth-child(1) { grid-column: span 7; background: linear-gradient(145deg, rgba(157, 200, 233, .18), rgba(17, 16, 15, .76)); }
+    .job:nth-child(2) { grid-column: span 5; background: linear-gradient(145deg, rgba(159, 182, 155, .16), rgba(17, 16, 15, .78)); }
+    .job:nth-child(3) { grid-column: span 5; background: linear-gradient(145deg, rgba(216, 183, 109, .16), rgba(17, 16, 15, .78)); }
+    .job:nth-child(4) { grid-column: span 7; background: linear-gradient(145deg, rgba(217, 150, 150, .15), rgba(17, 16, 15, .78)); }
+    .job:nth-child(5) { grid-column: span 12; min-height: 300px; background: linear-gradient(145deg, rgba(245, 241, 232, .11), rgba(17, 16, 15, .78)); }
+
+    .job .orbital {
+      position: absolute;
+      right: -70px;
+      bottom: -90px;
+      width: 260px;
+      height: 260px;
+      border: 1px solid rgba(245, 241, 232, .14);
+      border-radius: 50%;
+      background: rgba(245, 241, 232, .035);
+      animation: orbitalPulse 7s ease-in-out infinite;
+    }
+
+    .job-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 58px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .job h3 {
+      position: relative;
+      max-width: 620px;
+      margin: 0 0 14px;
+      font-size: clamp(30px, 4vw, 58px);
+      line-height: .92;
+      letter-spacing: -.065em;
+    }
+
+    .job p {
+      position: relative;
+      max-width: 680px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+
+    .tags {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .tag {
+      padding: 9px 12px;
+      border: 1px solid rgba(245, 241, 232, .14);
+      border-radius: 999px;
+      color: var(--cream);
+      background: rgba(7, 7, 7, .22);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .skills-band {
+      border-block: 1px solid var(--line);
+      background: #0d0c0b;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill {
+      min-height: 330px;
+      padding: 26px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .skill:hover {
+      transform: translateY(-10px);
+      border-color: rgba(245, 241, 232, .3);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, .35);
+    }
+
+    .skill small {
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .skill h3 {
+      margin: 52px 0 16px;
+      font-size: 34px;
+      line-height: .98;
+      letter-spacing: -.06em;
+    }
+
+    .skill p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+
+    .education-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .education {
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .035)),
+        rgba(17, 16, 15, .56);
+      backdrop-filter: blur(22px) saturate(145%);
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .education b {
+      font-size: 25px;
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .education span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .contact-panel {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 68px);
+      background:
+        radial-gradient(circle at 82% 18%, rgba(216, 183, 109, .22), transparent 24rem),
+        radial-gradient(circle at 12% 86%, rgba(157, 200, 233, .15), transparent 26rem),
+        rgba(17, 16, 15, .82);
+    }
+
+    .contact-panel h2 {
+      max-width: 920px;
+      margin-bottom: 22px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .contact-copy {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-link {
+      padding: 18px;
+      border: 1px solid rgba(245, 241, 232, .14);
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .025)),
+        rgba(7, 7, 7, .34);
+      transition: transform .2s, background .2s;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+
+    .contact-link:hover {
+      transform: translateX(5px);
+      background: rgba(245, 241, 232, .07);
+    }
+
+    .contact-link small {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .contact-link span {
+      color: var(--cream);
+      font-weight: 850;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 28px 0 44px;
+      color: var(--dim);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .reveal {
+      opacity: 0;
+      filter: blur(12px);
+      transform: translateY(34px) scale(.98);
+      transition: opacity .9s cubic-bezier(.2, .8, .2, 1), transform .9s cubic-bezier(.2, .8, .2, 1), filter .9s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+
+    .magnetic {
+      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0));
+    }
+
+    @keyframes ambientSweep {
+      from { background-position: 0% 50%; }
+      to { background-position: 100% 50%; }
+    }
+
+    @keyframes morphOne {
+      from { transform: translate3d(-4%, -2%, 0) scale(1) rotate(0deg); border-radius: 48% 52% 60% 40%; }
+      to { transform: translate3d(8%, 6%, 0) scale(1.12) rotate(12deg); border-radius: 62% 38% 42% 58%; }
+    }
+
+    @keyframes morphTwo {
+      from { transform: translate3d(4%, 4%, 0) scale(1) rotate(0deg); border-radius: 44% 56% 46% 54%; }
+      to { transform: translate3d(-8%, -5%, 0) scale(1.16) rotate(-16deg); border-radius: 58% 42% 64% 36%; }
+    }
+
+    @keyframes slowRotate {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes orbitSpin {
+      to { transform: rotate(350deg); }
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes orbitalPulse {
+      0%, 100% { transform: scale(1); opacity: .78; }
+      50% { transform: scale(1.18); opacity: .38; }
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        grid-template-columns: 1fr auto;
+        width: min(720px, calc(100% - 32px));
+      }
+
+      .nav-links,
+      .nav-cta { display: none; }
+
+      .menu { display: block; }
+
+      .nav-links.open {
+        position: absolute;
+        top: 70px;
+        left: 16px;
+        right: 16px;
+        display: grid;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        background: rgba(13, 13, 12, .94);
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-links.open a {
+        min-height: 48px;
+        justify-content: flex-start;
+      }
+
+      .hero-grid,
+      .hero-bottom,
+      .section-head,
+      .about-layout,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .actions { justify-content: flex-start; }
+      .portrait { min-height: 520px; }
+      .job,
+      .job:nth-child(n) { grid-column: span 12; }
+      .skill-row,
+      .education-strip { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 24px, 1380px); }
+      .hero { padding-top: 106px; }
+      .hero-art { inset: 78px 8px 14px; border-radius: 28px; }
+      .availability { font-size: 12px; }
+      h1 { font-size: clamp(54px, 18vw, 92px); }
+      h2 { font-size: clamp(44px, 13vw, 72px); }
+      .hero-side,
+      .mini-grid { grid-template-columns: 1fr; }
+      .hero-bottom { margin-top: 18px; }
+      .actions .btn { width: 100%; }
+      section { padding: 76px 0; }
+      .portrait { min-height: 430px; }
+      .text-card { padding: 24px; }
+      .job { min-height: 360px; padding: 20px; }
+      .job-top { margin-bottom: 36px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="spotlight" aria-hidden="true"></div>
+  <div class="topbar">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top">
+        <span class="brand-mark">AK</span>
+        <span>Aditya Katyayan</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#skills">Stack</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="assets/Aditya_Katyayan_Resume_2026.pdf" target="_blank" rel="noopener">Resume</a>
+      <button class="menu" id="menuBtn" aria-label="Open menu">+</button>
+    </nav>
+  </div>
+
+  <main id="top">
+    <header class="hero">
+      <div class="hero-art" aria-hidden="true">
+        <span class="shine-layer"></span>
+        <span class="orbit"></span>
+        <span class="orbit two"></span>
+      </div>
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="availability reveal"><span class="dot"></span>Available for remote IT support roles</div>
+            <h1 class="reveal">Reliable support, <em>premium systems</em></h1>
+          </div>
+          <aside class="hero-side reveal" aria-label="Career highlights">
+            <div class="side-card"><b>4+</b><span>Years across POS, service desk, cloud IAM, and fintech support.</span></div>
+            <div class="side-card"><b>99%</b><span>CSAT experience in high-volume enterprise support queues.</span></div>
+          </aside>
+        </div>
+        <div class="hero-bottom reveal">
+          <p class="intro">I help businesses keep critical technology running: H&L POS, ImPOS, Microsoft 365, SailPoint, ServiceNow, payments workflows, and remote support operations.</p>
+          <div class="actions">
+            <a class="btn primary" href="assets/Aditya_Katyayan_Resume_2026.pdf" target="_blank" rel="noopener">Open Resume</a>
+            <a class="btn" href="#work">Explore Work</a>
+            <a class="btn" href="mailto:aditya.katyayan.9@gmail.com">Hire Me</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>POS Support</span><span><em>Cloud IAM</em></span><span>Service Desk</span><span><em>Fintech Ops</em></span><span>Azure AZ-900</span><span><em>Remote Support</em></span>
+        <span>POS Support</span><span><em>Cloud IAM</em></span><span>Service Desk</span><span><em>Fintech Ops</em></span><span>Azure AZ-900</span><span><em>Remote Support</em></span>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">About</p>
+            <h2 class="reveal">Technical support with a designer's eye for <em>clarity.</em></h2>
+          </div>
+          <p class="section-copy reveal">The reference you shared feels premium because it uses restraint, scale, and confidence. This version brings that same energy to your support engineering profile.</p>
+        </div>
+        <div class="about-layout">
+          <div class="portrait reveal" aria-label="Portrait of Aditya Katyayan">
+            <img src="assets/aditya-katyayan-photo.jpg" alt="Aditya Katyayan">
+            <span class="photo-glass" aria-hidden="true"></span>
+          </div>
+          <div class="about-copy">
+          <div class="text-card reveal magnetic">
+              I am an AZ-900 certified technical support professional based in India, working across hospitality POS, cloud identity, fintech, and enterprise service desk environments. I like clean handoffs, fast diagnosis, sharp documentation, and support experiences that feel calm to the customer.
+            </div>
+            <div class="mini-grid">
+              <div class="mini-card reveal magnetic"><b>AZ-900</b><span>Microsoft Azure Fundamentals certified with cloud infrastructure exposure.</span></div>
+              <div class="mini-card reveal magnetic"><b>L1/L2</b><span>Incident triage, remote diagnostics, escalation, and client training.</span></div>
+              <div class="mini-card reveal magnetic"><b>C1</b><span>Advanced English communication for global support teams.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">Show not tell</p>
+            <h2 class="reveal">Selected operational <em>experience.</em></h2>
+          </div>
+          <p class="section-copy reveal">Presented like case-study tiles instead of a plain resume timeline, so recruiters can scan impact quickly.</p>
+        </div>
+        <div class="work-grid">
+          <article class="job reveal magnetic">
+            <span class="orbital" aria-hidden="true"></span>
+            <div class="job-top"><span>SherpaIT / H&L POS</span><span>Jul 2025 - Present</span></div>
+            <h3>Keeping Australian hospitality POS environments live.</h3>
+            <p>First-line support for HLPOS software, hardware, network, EFTPOS, and kitchen display issues. Includes proactive checks, remote diagnostics, CRM ticket documentation, client training, and escalation coordination.</p>
+            <div class="tags"><span class="tag">HLPOS</span><span class="tag">EFTPOS</span><span class="tag">Hospitality IT</span><span class="tag">Remote Support</span></div>
+          </article>
+
+          <article class="job reveal magnetic">
+            <span class="orbital" aria-hidden="true"></span>
+            <div class="job-top"><span>SherpaIT / ImPOS</span><span>Feb 2025 - Jun 2025</span></div>
+            <h3>Fast POS troubleshooting with better internal knowledge.</h3>
+            <p>Resolved hardware, software, and network issues for hospitality clients while maintaining Dynamics CRM tickets, knowledge articles, and training workflows.</p>
+            <div class="tags"><span class="tag">ImPOS</span><span class="tag">Dynamics CRM</span><span class="tag">Knowledge Base</span></div>
+          </article>
+
+          <article class="job reveal magnetic">
+            <span class="orbital" aria-hidden="true"></span>
+            <div class="job-top"><span>LTIMindtree / EY</span><span>Jan 2024 - Jan 2025</span></div>
+            <h3>Enterprise access support for global users.</h3>
+            <p>Handled IAM requests, user provisioning, Microsoft 365 Dynamics CRM, Power Apps, OneAccess, SailPoint IdentityIQ, and ServiceNow dashboard reporting.</p>
+            <div class="tags"><span class="tag">SailPoint</span><span class="tag">OneAccess</span><span class="tag">ServiceNow</span><span class="tag">IAM</span></div>
+          </article>
+
+          <article class="job reveal magnetic">
+            <span class="orbital" aria-hidden="true"></span>
+            <div class="job-top"><span>Revolut Operations India</span><span>Aug 2023 - Nov 2023</span></div>
+            <h3>Customer support inside high-stakes banking flows.</h3>
+            <p>Supported global users through banking queries, transfers, and transaction investigations across SWIFT, SEPA, ACH, Faster Payments, MT103 checks, disputes, and direct debits.</p>
+            <div class="tags"><span class="tag">SWIFT</span><span class="tag">SEPA</span><span class="tag">MT103</span><span class="tag">Fintech</span></div>
+          </article>
+
+          <article class="job reveal magnetic">
+            <span class="orbital" aria-hidden="true"></span>
+            <div class="job-top"><span>Trigent Software / Wipro Ltd</span><span>Apr 2022 - Aug 2023</span></div>
+            <h3>Service desk foundation: tickets, endpoints, Office 365, Windows.</h3>
+            <p>Resolved 20+ daily tickets with 99% CSAT, supported Windows and Office 365 issues, configured Outlook, and set up domain-joined and AutoPilot laptops.</p>
+            <div class="tags"><span class="tag">ServiceNow</span><span class="tag">Windows</span><span class="tag">Office 365</span><span class="tag">AutoPilot</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-band">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">Stack</p>
+            <h2 class="reveal">Built for modern support <em>operations.</em></h2>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill reveal magnetic"><small>01</small><h3>POS & Hospitality IT</h3><p>H&L POS, HLPOS, ImPOS, EFTPOS, kitchen display systems, Xero, MYOB, POS integrations, and remote restaurant support.</p></div>
+          <div class="skill reveal magnetic"><small>02</small><h3>Cloud & Identity</h3><p>Microsoft Azure, AZ-900, Microsoft Entra ID, SailPoint IdentityIQ, OneAccess, Power Apps, access provisioning, and permissions workflows.</p></div>
+          <div class="skill reveal magnetic"><small>03</small><h3>ITSM & Tooling</h3><p>ServiceNow, Jira, Confluence, Microsoft 365 Dynamics, Slack, Google Workspace, SQL / SSMS diagnostics, dashboards, and documentation.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">Education</p>
+            <h2 class="reveal">Academic background and <em>credentials.</em></h2>
+          </div>
+        </div>
+        <div class="education-strip">
+          <div class="education reveal magnetic"><b>B.Tech - Marine Engineering</b><span>Indian Maritime University / 2015 - 2019 / 72%</span></div>
+          <div class="education reveal magnetic"><b>Intermediate - 12th</b><span>HSHRSS Naya Nagar Pithahi, Bihar / 2013 - 2015 / 64.2%</span></div>
+          <div class="education reveal magnetic"><b>Matriculation - 10th</b><span>Gurukul Kisangarh Ghasera, Haryana / 2012 / 94.6%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-panel reveal">
+          <p class="kicker">Contact</p>
+          <h2>Need someone who can make support feel <em>effortless?</em></h2>
+          <div class="contact-grid">
+            <div>
+              <p class="contact-copy">Open to remote IT support, POS support, cloud helpdesk, and technical operations roles. Based in India and comfortable with Australian, UK, and global time zones.</p>
+              <div class="actions">
+                <a class="btn primary" href="mailto:aditya.katyayan.9@gmail.com">Start a Conversation</a>
+                <a class="btn" href="assets/Aditya_Katyayan_Resume_2026.pdf" target="_blank" rel="noopener">View Resume</a>
+              </div>
+            </div>
+            <div class="contact-links">
+              <a class="contact-link" href="mailto:aditya.katyayan.9@gmail.com"><small>Email</small><span>aditya.katyayan.9@gmail.com</span></a>
+              <a class="contact-link" href="tel:+917464050526"><small>Phone</small><span>+91 74640 50526</span></a>
+              <a class="contact-link" href="https://linkedin.com/in/adityakatyayan" target="_blank" rel="noopener"><small>LinkedIn</small><span>linkedin.com/in/adityakatyayan</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Aditya Katyayan / Technical Support & Cloud Infrastructure / 2026</div>
+  </footer>
+
+  <script>
+    const menuBtn = document.querySelector("#menuBtn");
+    const navLinks = document.querySelector("#navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      menuBtn.textContent = navLinks.classList.contains("open") ? "x" : "+";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.textContent = "+";
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12, rootMargin: "0px 0px -50px 0px" });
+
+    document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+
+    const root = document.documentElement;
+    window.addEventListener("pointermove", (event) => {
+      root.style.setProperty("--mx", `${event.clientX}px`);
+      root.style.setProperty("--my", `${event.clientY}px`);
+    }, { passive: true });
+
+    document.querySelectorAll(".magnetic").forEach((card) => {
+      card.addEventListener("pointermove", (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const rx = ((y / rect.height) - .5) * -7;
+        const ry = ((x / rect.width) - .5) * 7;
+        card.style.setProperty("--rx", `${rx}deg`);
+        card.style.setProperty("--ry", `${ry}deg`);
+        card.style.setProperty("--ty", "-6px");
+      });
+
+      card.addEventListener("pointerleave", () => {
+        card.style.setProperty("--rx", "0deg");
+        card.style.setProperty("--ry", "0deg");
+        card.style.setProperty("--ty", "0");
+      });
+    });
+  </script>
+</body>
+</html>
